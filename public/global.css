@@ -1,0 +1,11 @@
+#root {
+    --maroon: #A5243D;
+    --babyblue: #CEE0DC;
+    --lightpurp: #AFAAB9;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Manjari|Staatliches&display=swap');
+
+h1,h2,h3,h4,h5,h6 {font-family: 'Staatliches', cursive;}
+
+body {font-family: 'Manjari', sans-serif;}
