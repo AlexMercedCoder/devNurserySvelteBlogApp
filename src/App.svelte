@@ -50,7 +50,7 @@ const handleLogout = () => {
 </script>
 
 <main>
-	<h1 class="logo"><span>dev</span>Nursery <span>B</span>logging</h1>
+	<a href="https://main.devnursery.com"><h1 class="logo"><span>dev</span>Nursery <span>B</span>logging</h1></a>
 	{#if !loggedIN}
 	<Login loginHandler = {loginHandler}/>
 	{/if}
@@ -65,6 +65,8 @@ const handleLogout = () => {
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
 
 main {padding: 20px; text-align: center}
+
+main a {text-decoration: none; color: black;}
 
 .logo {text-align: center; font-size: 300%; width: 100%; margin: 10px auto; font-family: 'Major Mono Display', monospace;}
 
