@@ -57,13 +57,14 @@ const handleLogout = () => {
 	{#if loggedIN}
 	<Interface user={userInfo} logout={handleLogout}/>
 	{/if}
+	<h3>App Made by Alex Merced of AlexMercedCoder.com using SvelteJS</h3>
 </main>
 
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
 
-main {padding: 20px;}
+main {padding: 20px; text-align: center}
 
 .logo {text-align: center; font-size: 300%; width: 100%; margin: 10px auto; font-family: 'Major Mono Display', monospace;}
 

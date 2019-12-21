@@ -54,12 +54,12 @@ const handleCreate = async () => {
 
 <div>
     <div class="login">
-    <h2>Login</h2>
+    <h1>Login</h1>
 
     <form on:submit|preventDefault = {login}>
         <h2>username</h2>
         <input type="text" name="username" bind:value={loginInfo.username}/>
-        <h3>password</h3>
+        <h2>password</h2>
         <input type="password" name="password" bind:value={loginInfo.password}/>
         <input type="submit" value="Login"/>
     </form>

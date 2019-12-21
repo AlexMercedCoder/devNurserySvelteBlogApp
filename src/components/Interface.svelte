@@ -20,8 +20,10 @@ let createPost = false;
 
 let postArray = [];
 
+//Toggles Create Post Form
 const showCreate = () => createPost = !createPost;
 
+//Gets Posts from LocalStorage, if none, checks the api
 onMount(async () => {
         if (window.localStorage.getItem('devNurseryPosts')){
             postArray = JSON.parse(window.localStorage.getItem('devNurseryPosts'));
@@ -36,6 +38,7 @@ onMount(async () => {
 
 	});
 
+//Submits post to API, adds to postArray and stores it in localstorage
 const submitPost = async () => {
     try {
         const url = 'https://wrfjnsifxl.execute-api.us-east-1.amazonaws.com/production/api/blogs/'
@@ -64,7 +67,7 @@ const submitPost = async () => {
 
 }
 
-
+//Edits post, edits array, stores in local storage
 const editPost = async (event, id, index) => {
     try {
         console.log(editProps)
@@ -100,11 +103,30 @@ const editPost = async (event, id, index) => {
 
 }
 
+//Deletes Post, Splices item from array, stores in localstorage
+const deletePost = async (id,index) => {
+    console.log(id + " " + index)
+    const url = `https://wrfjnsifxl.execute-api.us-east-1.amazonaws.com/production/api/blogs/${id}`
+    const response = await fetch(url, {
+        method: 'DELETE',
+        body: JSON.stringify(newPost), // data can be `string` or {object}!
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const json = await response.json();
+    postArray.splice(index,1);
+    window.localStorage.setItem('devNurseryPosts',JSON.stringify(postArray));
+    postArray = [...postArray] //assignment to trigger DOM Changes
+    console.log(postArray)
+}
+
 </script>
 
 <div class="interface">
     <h1> Welcome {user.username} </h1>
-    <p>WARNING: This site is currently in early testing, so the database may be cleared to install additional features. Make sure to backup your posts on websites like Dev.to or Medium.
+    <p>WARNING: This site is currently in early testing, so the database may be cleared to install additional features. Make sure to backup your posts on websites like Dev.to or Medium.</p>
+    <p>Each post has a title, body and section to list the tech your focusing on. Coming soon, your public blog page link!</p>
     <nav>
         <button on:click={showCreate}>Create Post</button>
         <button on:click={logout}>Logout</button>
@@ -128,6 +150,7 @@ const editPost = async (event, id, index) => {
     <p>{post.entry}</p>
     <h3>{post.tech}</h3>
     <h3>{post.Date}</h3>
+    <button on:click={e => deletePost(post._id,index)}>Delete Post</button>
     <button on:click={e => switches[post._id] = !switches[post._id]}>Edit Post</button>
     </div>
     {#if switches[post._id]}
