@@ -74,7 +74,7 @@ const handleCreate = async () => {
         <form on:submit|preventDefault ={handleCreate}>
             <input type="text" placeholder="username" name="username" bind:value={newAccount.username}/>
             <input type="password" placeholder="password" name="password" bind:value={newAccount.password}/>
-            <input type="text" placeholder="Favorite Tect" name="favtech" bind:value={newAccount.favtech}/>
+            <input type="text" placeholder="Favorite Tech" name="favtech" bind:value={newAccount.favtech}/>
             <input type="text" placeholder="Bio" name="bio" bind:value={newAccount.bio}/>
             <input type="text" placeholder="Website" name="url" bind:value={newAccount.url}/>
             <input type="submit" value="Create User"/>

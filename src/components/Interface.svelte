@@ -126,7 +126,7 @@ const deletePost = async (id,index) => {
 <div class="interface">
     <h1> Welcome {user.username} </h1>
     <p>WARNING: This site is currently in early testing, so the database may be cleared to install additional features. Make sure to backup your posts on websites like Dev.to or Medium.</p>
-    <p>Each post has a title, body and section to list the tech your focusing on. Coming soon, your public blog page link!</p>
+    <p>Each post has a title, body and section to list the tech you are focusing on. You can find your public blog page at http://blogs.devnursery.com/[username]</p>
     <nav>
         <button on:click={showCreate}>Create Post</button>
         <button on:click={logout}>Logout</button>
