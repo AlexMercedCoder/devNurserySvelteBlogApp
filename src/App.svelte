@@ -18,6 +18,7 @@
 
 const handleLogout = () => {
 	window.localStorage.removeItem('devNursery');
+	window.localStorage.removeItem('devNtodos');
 	loggedIN = false
 }
 

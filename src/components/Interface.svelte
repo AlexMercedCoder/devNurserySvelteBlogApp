@@ -130,6 +130,7 @@ const deletePost = async (id,index) => {
     <nav>
         <button on:click={showCreate}>Create Post</button>
         <button on:click={logout}>Logout</button>
+        <a href="/devnurtodo/"><button>Todo List App</button></a>
         </nav>
     <div>
 
