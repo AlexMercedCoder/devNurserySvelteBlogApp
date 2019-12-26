@@ -332,7 +332,6 @@ let AppComponent = class AppComponent {
     }
     addTodo(form) {
         console.log(form.form);
-        this.todos.push(form.form.controls.todo.value);
         const user = this.userInfo.user;
         const body = {
             entry: form.form.controls.todo.value,
@@ -341,8 +340,12 @@ let AppComponent = class AppComponent {
         fetch(`https://buffaloapidevn.herokuapp.com/todoes/`, {
             method: 'post',
             body: JSON.stringify(body)
-        }).then(res => console.log(res));
-        window.localStorage.setItem('devNtodos', JSON.stringify(this.todos));
+        }).then(res => res.json())
+            .then(json => {
+            this.todos.push(json);
+            window.localStorage.setItem('devNtodos', JSON.stringify(this.todos));
+            console.log(this.todos);
+        });
     }
     removeTodo(index, id) {
         this.todos.splice(index, 1);

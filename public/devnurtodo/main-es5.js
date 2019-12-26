@@ -736,8 +736,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppComponent, [{
         key: "addTodo",
         value: function addTodo(form) {
+          var _this = this;
+
           console.log(form.form);
-          this.todos.push(form.form.controls.todo.value);
           var user = this.userInfo.user;
           var body = {
             entry: form.form.controls.todo.value,
@@ -747,9 +748,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             method: 'post',
             body: JSON.stringify(body)
           }).then(function (res) {
-            return console.log(res);
+            return res.json();
+          }).then(function (json) {
+            _this.todos.push(json);
+
+            window.localStorage.setItem('devNtodos', JSON.stringify(_this.todos));
+            console.log(_this.todos);
           });
-          window.localStorage.setItem('devNtodos', JSON.stringify(this.todos));
         }
       }, {
         key: "removeTodo",
@@ -766,7 +771,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this2 = this;
 
           this.userInfo = JSON.parse(window.localStorage.getItem('devNursery'));
           this.storedTodos = JSON.parse(window.localStorage.getItem('devNtodos'));
@@ -780,7 +785,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               fetch("https://buffaloapidevn.herokuapp.com/todos/".concat(this.userInfo.user)).then(function (res) {
                 return res.json();
               }).then(function (json) {
-                return _this.todos = json;
+                return _this2.todos = json;
               });
             }
           }
