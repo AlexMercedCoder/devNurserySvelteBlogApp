@@ -1,0 +1,1 @@
+import{r,g as s}from"./p-bdbc0325.js";import"./p-20de5b5b.js";import{A as t}from"./p-454f1ce0.js";const o=class{constructor(s){r(this,s)}render(){return this.renderer(this.client)}get el(){return s(this)}};t.injectProps(o,["client"]);export{o as apollo_consumer};

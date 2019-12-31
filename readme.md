@@ -52,3 +52,13 @@ So the next application I tackled was creating an API for todo lists using the G
 I now had to create an interface for the todo list application I chose to use angular to create it. I made us of many of the most common Angular features (ngif, ngfor, one way bind, two way binding) and then ran into a few logistical issues regarding authentication.
 
 My first plan was to pull the login info from localstorage but even different subdomains have distinct localstorage. Then I tried checking the session with the blog api but forgot since it is serverless there is no persistent session. I ended up nesting the angular app build inside the svelte app build for the blogging app so they'd sit on the same subdomain and have access to the same localstorage.
+
+### App 7 - GraphQL Server to haromonize Postgres and Mongo
+##### https://github.com/AlexMercedCoder/devnGraphQLApi
+
+Creating a GraphQL server with Apollo Server to deliver blogs from the mongo database and todos from the postgres database from one unified API
+
+### App 8 - StencilJS Summary Page
+##### https://github.com/AlexMercedCoder/devNurserySummaryPage
+
+To test out the GraphQL API, a summary page created with StencilJS was added to the member dashboard that summarizes the users content for the user.

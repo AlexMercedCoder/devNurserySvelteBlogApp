@@ -332,7 +332,7 @@ let AppComponent = class AppComponent {
     }
     addTodo(form) {
         console.log(form.form);
-        const user = this.userInfo.user;
+        const user = this.userInfo.username;
         const body = {
             entry: form.form.controls.todo.value,
             user: user
@@ -358,15 +358,21 @@ let AppComponent = class AppComponent {
     ngOnInit() {
         this.userInfo = JSON.parse(window.localStorage.getItem('devNursery'));
         this.storedTodos = JSON.parse(window.localStorage.getItem('devNtodos'));
+        console.log(this.userInfo);
+        console.log(this.userInfo);
         if (this.userInfo) {
             this.loggedIN = true;
             if (this.storedTodos) {
                 this.todos = this.storedTodos;
             }
             else {
-                fetch(`https://buffaloapidevn.herokuapp.com/todos/${this.userInfo.user}`)
+                fetch(`https://buffaloapidevn.herokuapp.com/todos/${this.userInfo.username}`)
                     .then((res) => res.json())
-                    .then((json) => this.todos = json);
+                    .then((json) => {
+                    this.todos = json;
+                    window.localStorage.setItem('devNtodos', JSON.stringify(this.todos));
+                    console.log(this.todos);
+                });
             }
         }
     }

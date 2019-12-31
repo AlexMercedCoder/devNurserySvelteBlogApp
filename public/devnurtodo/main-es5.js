@@ -739,7 +739,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           console.log(form.form);
-          var user = this.userInfo.user;
+          var user = this.userInfo.username;
           var body = {
             entry: form.form.controls.todo.value,
             user: user
@@ -775,6 +775,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.userInfo = JSON.parse(window.localStorage.getItem('devNursery'));
           this.storedTodos = JSON.parse(window.localStorage.getItem('devNtodos'));
+          console.log(this.userInfo);
+          console.log(this.userInfo);
 
           if (this.userInfo) {
             this.loggedIN = true;
@@ -782,10 +784,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (this.storedTodos) {
               this.todos = this.storedTodos;
             } else {
-              fetch("https://buffaloapidevn.herokuapp.com/todos/".concat(this.userInfo.user)).then(function (res) {
+              fetch("https://buffaloapidevn.herokuapp.com/todos/".concat(this.userInfo.username)).then(function (res) {
                 return res.json();
               }).then(function (json) {
-                return _this2.todos = json;
+                _this2.todos = json;
+                window.localStorage.setItem('devNtodos', JSON.stringify(_this2.todos));
+                console.log(_this2.todos);
               });
             }
           }
