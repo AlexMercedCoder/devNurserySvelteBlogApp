@@ -34,7 +34,7 @@ const handleCreate = async () => {
         const url = `${apiURL}/user/create`
         const response = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(newAccount), // data can be `string` or {object}!
+            body: JSON.stringify(newAccount),
             headers: {
                 'Content-Type': 'application/json'
             }
