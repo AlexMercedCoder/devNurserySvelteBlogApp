@@ -3,7 +3,7 @@ export let loginHandler;
 
 let makeAccount = false;
 
-const apiURL = true ? "https://devnurseryapi.herokuapp.com/" : "http://localhost:3000"
+const apiURL = true ? "https://devnurseryapi.herokuapp.com" : "http://localhost:3000"
 
 const login = (e) => {
     console.log(loginInfo);
