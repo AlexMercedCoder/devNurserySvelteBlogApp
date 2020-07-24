@@ -5,6 +5,8 @@
 
 	let loggedIN = false;
 
+	const apiURL = false ? "" : "http://localhost:3000"
+
 	let userInfo = {};
 
 	//CHECK IF LOGGED IN
@@ -29,7 +31,7 @@ const handleLogout = () => {
 	        return 0
 	    }
 	    try {
-	        const url = 'https://wrfjnsifxl.execute-api.us-east-1.amazonaws.com/production/api/users/sessions'
+	        const url = `${apiURL}/user/login`
 	        const response = await fetch(url, {
 	            method: 'POST',
 	            body: JSON.stringify(loginInfo), // data can be `string` or {object}!
@@ -39,7 +41,7 @@ const handleLogout = () => {
 	        });
 	        const json = await response.json();
 			console.log(json);
-			userInfo = json.user;
+			userInfo = json;
 	        console.log('Success:', JSON.stringify(json));
 			loggedIN = true;
 			window.localStorage.setItem('devNursery',JSON.stringify(userInfo))
@@ -51,14 +53,14 @@ const handleLogout = () => {
 </script>
 
 <main>
-	<a href="https://main.devnursery.com"><h1 class="logo"><span>dev</span>Nursery <span>B</span>logging</h1></a>
+	<a href="https://main.devnursery.com"><h1 class="logo"><span>dev</span>Nursery <span>M</span>embers</h1></a>
 	{#if !loggedIN}
 	<Login loginHandler = {loginHandler}/>
 	{/if}
 	{#if loggedIN}
 	<Interface user={userInfo} logout={handleLogout}/>
 	{/if}
-	<h3>App Made by Alex Merced of AlexMercedCoder.com using SvelteJS</h3>
+	<h3>Notes Frontend App Made by Alex Merced of AlexMercedCoder.com using SvelteJS, backend using ExpressJS</h3>
 </main>
 
 <style>

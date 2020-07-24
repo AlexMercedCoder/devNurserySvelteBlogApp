@@ -3,6 +3,8 @@ export let loginHandler;
 
 let makeAccount = false;
 
+const apiURL = false ? "" : "http://localhost:3000"
+
 const login = (e) => {
     console.log(loginInfo);
     loginHandler(loginInfo);}
@@ -12,9 +14,6 @@ const showCreate = () => {makeAccount = !makeAccount};
 let newAccount = {
     username: '',
     password: '',
-    favtech: '',
-    bio: '',
-    url: ''
 };
 
 let loginInfo = {
@@ -32,7 +31,7 @@ const handleCreate = async () => {
         return 0
     }
     try {
-        const url = 'https://wrfjnsifxl.execute-api.us-east-1.amazonaws.com/production/api/users/'
+        const url = `${apiURL}/user/create`
         const response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify(newAccount), // data can be `string` or {object}!
@@ -74,9 +73,6 @@ const handleCreate = async () => {
         <form on:submit|preventDefault ={handleCreate}>
             <input type="text" placeholder="username" name="username" bind:value={newAccount.username}/>
             <input type="password" placeholder="password" name="password" bind:value={newAccount.password}/>
-            <input type="text" placeholder="Favorite Tech" name="favtech" bind:value={newAccount.favtech}/>
-            <input type="text" placeholder="Bio" name="bio" bind:value={newAccount.bio}/>
-            <input type="text" placeholder="Website" name="url" bind:value={newAccount.url}/>
             <input type="submit" value="Create User"/>
         </form>
         {/if}
