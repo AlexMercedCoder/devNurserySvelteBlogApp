@@ -7,7 +7,7 @@ export let logout;
 
 let switches = {};
 
-const apiURL = false ? "" : "http://localhost:3000"
+const apiURL = true ? "https://devnurseryapi.herokuapp.com/" : "http://localhost:3000"
 
 let newNote = {
     title: '',

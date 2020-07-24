@@ -1,1 +1,0 @@
-import{r,h as s}from"./p-bdbc0325.js";import"./p-20de5b5b.js";import{A as t}from"./p-454f1ce0.js";const o=t.Provider,e=class{constructor(s){r(this,s),this.declarations="DECLARATIONS"}render(){return s(o,{state:{client:this.client}},s("slot",null))}};export{e as apollo_provider};
